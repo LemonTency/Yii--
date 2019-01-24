@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Books;
+use app\models\Library;
 
 /**
- * BookSearch represents the model behind the search form of `app\models\Book`.
+ * LibrarySearch represents the model behind the search form of `app\models\Library`.
  */
-class BookSearch extends Book
+class LibrarySearch extends Library
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,7 @@ class BookSearch extends Book
     {
         return [
             [['id'], 'integer'],
-            [['title'], 'safe'],
-            [['author'], 'safe'],
+            [['title', 'author'], 'safe'],
         ];
     }
 
@@ -41,7 +40,7 @@ class BookSearch extends Book
      */
     public function search($params)
     {
-        $query = Book::find();
+        $query = Library::find();
 
         // add conditions that should always apply here
 
@@ -62,12 +61,9 @@ class BookSearch extends Book
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
-        $query->andFilterWhere(['like', 'author', $this->author]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'author', $this->author]);
+
         return $dataProvider;
     }
 }
-
-//三栏都可以搜索，后两栏都可以使用模糊搜索
-
-// 因为有可能只输入ID或者只输入title，所以就需要应用场景

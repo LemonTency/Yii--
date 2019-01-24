@@ -349,3 +349,9 @@ https://www.yiichina.com/tutorial/663
             [['name', 'author'], 'required'],
             [['name', 'author'], 'string', 'max' => 100],
         ];
+
+遇到的问题
+
+https://jingyan.baidu.com/article/851fbc37c13a2c3e1f15ab03.html
+设置主键primary:
+https://jingyan.baidu.com/article/851fbc37c13a2c3e1f15ab03.html
